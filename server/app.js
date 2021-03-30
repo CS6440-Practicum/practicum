@@ -77,9 +77,11 @@ passport.serializeUser(function (user, done) {
 
 // used to deserialize the user
 passport.deserializeUser(function(id, done) {
-  console.log("DESERIALIZE!")
-  done(err, {
-    id: "fake user"
+  console.log("DESERIALIZE!", id)
+  done(null,  {
+      id: 'b5315d22-858d-46b2-931d-d0787d6d8b2f',
+      email: 'evan.strat@gmail.com',
+      name: 'Evan Strat'
   });
 });
 
@@ -93,15 +95,33 @@ app.get('/auth/dexcom/callback',
 });
 
 app.get('/auth/google',
-  passport.authorize('google', { scope: [ 'email', 'profile' ] }));
+  passport.authenticate('google', { scope: [ 'email', 'profile' ] }));
 
 app.get( '/auth/google/callback',
-  passport.authorize( 'google', { failureRedirect: '/error' }),
+  passport.authenticate( 'google', { failureRedirect: '/error' }),
   function(req, res) {
-
-    console.log("google auth completed, req.user:", req.user);
+    console.log("google auth completed, req.user:", req.user, req.account);
     res.redirect('/');
 });
+
+// isAuthenticated middleware adapted from the HackGT Bolt project, licensed under the MIT License
+// https://github.com/HackGT/bolt/blob/dcc19212c76e2ceafa8177051eaa764704e07a89/server/src/auth/auth.ts#L53
+function isAuthenticated(request, response, next) {
+    response.setHeader("Cache-Control", "private");
+    if (!request.isAuthenticated() || !request.user) {
+        if (request.session) {
+            request.session.returnTo = request.originalUrl;
+        }
+        response.redirect("/auth/login");
+    } else {
+        next();
+    }
+}
+
+app.get('/test', isAuthenticated, (req, res, next) => {
+    console.log("test req", req.user, req.account)
+    res.send("hi");
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
