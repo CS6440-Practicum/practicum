@@ -1,6 +1,6 @@
 // From https://www.codementor.io/@mirko0/how-to-use-sequelize-with-node-and-express-i24l67cuz
 const {Sequelize} = require("sequelize");
-const UserModel = require("./models/user");
+const UserModel = require("./models/User");
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',

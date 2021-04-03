@@ -4,11 +4,16 @@
   "description": "CS6440 Intro Health Informatics Practicum",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd server && yarn install && cd ../client && yarn install",
+    "build": "cd client && yarn run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.gatech.edu/jmarple3/practicum.git"
+    "url": "https://github.com/CS6440-Practicum/practicum.git"
+  },
+  "engines":{
+    "node": "14.x"
   },
   "author": "",
   "license": "ISC"
