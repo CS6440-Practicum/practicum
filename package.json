@@ -12,6 +12,9 @@
     "type": "git",
     "url": "https://github.com/CS6440-Practicum/practicum.git"
   },
+  "engines":{
+    "node": "14.x"
+  },
   "author": "",
   "license": "ISC"
 }
