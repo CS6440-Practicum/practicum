@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import useAsyncEffect from "use-async-effect";
 import Login from "./components/auth/Login";
-import {Col, Container, Nav, Navbar, NavDropdown, Row} from "react-bootstrap";
+import {Col, Container, Nav, Navbar, Row} from "react-bootstrap";
 import LoadingSpinner from "./components/util/LoadingSpinner";
 
 interface AuthState {
