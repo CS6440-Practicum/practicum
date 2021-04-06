@@ -60,6 +60,11 @@ router.get('/user', (req, res, next) => {
     });
 })
 
+router.get("/logout", ((req, res) => {
+    req.logout();
+    res.redirect("/");
+}))
+
 // isAuthenticated middleware adapted from the HackGT Bolt project, licensed under the MIT License
 // https://github.com/HackGT/bolt/blob/dcc19212c76e2ceafa8177051eaa764704e07a89/server/src/auth/auth.ts#L53
 function isAuthenticated(request, response, next) {
