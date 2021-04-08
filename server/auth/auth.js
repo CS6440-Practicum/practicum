@@ -37,11 +37,6 @@ router.get( '/google/callback',
         res.redirect(req.session.returnTo || "/");
     });
 
-router.get('/test', isAuthenticated, (req, res, next) => {
-    console.log("test req", req.user, req.account)
-    res.send("hi");
-})
-
 router.get('/user', (req, res, next) => {
     const user = req.user;
 
