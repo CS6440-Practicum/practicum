@@ -1,17 +1,14 @@
 import React from "react";
 import {Image} from "react-bootstrap";
 import GoogleSignInBtn from "../../img/btn_google_signin.png";
+import CenteredBlock from "../util/CenteredBlock";
 
 const Login = () => {
-	return (
-		<div style={{textAlign: "center"}}>
-			<h1>Sign in to continue</h1>
-			<br />
-			<a href="/auth/google">
-				<Image src={GoogleSignInBtn} alt={"Sign in with Google"} width={200}/>
-			</a>
-		</div>
-	);
+	return <CenteredBlock title="Sign in to continue">
+		<a href="/auth/google">
+			<Image src={GoogleSignInBtn} alt={"Sign in with Google"} width={200}/>
+		</a>
+	</CenteredBlock>;
 };
 
 export default Login;
