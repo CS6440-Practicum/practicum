@@ -1,6 +1,5 @@
 import {Nav, Navbar, NavLink} from "react-bootstrap";
 import React from "react";
-import {Link} from "react-router-dom";
 import {IUser} from "../../App";
 
 interface NavProps {
@@ -20,7 +19,7 @@ export function Navigation({ user }: NavProps) {
 					{user.name} ({user.email})
 				</Navbar.Text>
                 <Navbar.Text>
-					<NavLink as={Link} to="/auth/logout">Logout</NavLink>
+					<NavLink href="/auth/logout">Logout</NavLink>
                 </Navbar.Text>
 			</>}
 		</Navbar.Collapse>
