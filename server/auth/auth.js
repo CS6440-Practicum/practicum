@@ -37,11 +37,6 @@ router.get( '/google/callback',
         res.redirect(req.session.returnTo || "/");
     });
 
-router.get('/test', isAuthenticated, (req, res, next) => {
-    console.log("test req", req.user, req.account)
-    res.send("hi");
-})
-
 router.get('/user', (req, res, next) => {
     const user = req.user;
 
@@ -59,6 +54,11 @@ router.get('/user', (req, res, next) => {
         dexcomAuthComplete: user.dexcomAccessToken !== null
     });
 })
+
+router.get("/logout", ((req, res) => {
+    req.logout();
+    res.redirect("/");
+}))
 
 // isAuthenticated middleware adapted from the HackGT Bolt project, licensed under the MIT License
 // https://github.com/HackGT/bolt/blob/dcc19212c76e2ceafa8177051eaa764704e07a89/server/src/auth/auth.ts#L53
