@@ -11,6 +11,7 @@ const { v4: uuidv4 } = require('uuid');
 require('dotenv').config()
 
 const authRouter = require('./auth/auth');
+const apiRouter = require('./routes/api');
 const app = express();
 
 // view engine setup
@@ -32,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', authRouter.router);
+app.use('/api', apiRouter);
 app.use("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 })

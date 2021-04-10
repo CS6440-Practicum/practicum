@@ -29,7 +29,7 @@ router.get('/dexcom/callback',
     });
 
 router.get('/google', redirectIfGoogleLinked,
-    passport.authenticate('google', { scope: [ 'email', 'profile' ] }));
+    passport.authenticate('google', { scope: [ 'email', 'profile', 'https://www.googleapis.com/auth/fitness.activity.read' ] }));
 
 router.get( '/google/callback',
     passport.authenticate( 'google', { failureRedirect: '/error' }),
