@@ -74,6 +74,17 @@ function isAuthenticated(request, response, next) {
     }
 }
 
+function hasTokens(request, response, next) {
+    if (!request.user || !request.user.googleAccessToken || !request.user.dexcomAccessToken) {
+        if (request.session) {
+            request.session.returnTo = request.originalUrl;
+        }
+        response.redirect("/auth/google");
+    } else {
+        next();
+    }
+}
+
 function redirectIfGoogleLinked(request, response, next) {
     if (request.user && request.user.googleAccessToken) {
         response.redirect("/");
@@ -92,5 +103,6 @@ function redirectIfDexcomLinked(request, response, next) {
 
 module.exports = {
     isAuthenticated,
+    hasTokens,
     router
 };
