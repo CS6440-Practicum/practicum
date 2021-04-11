@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const refresh = require('passport-oauth2-refresh');
 const googleStrategy = require("./strategies/google");
-const dexcomStrategy = require("./strategies/dexcom");
+const { dexcomStrategy } = require("./strategies/dexcom");
 
 const { User } = require("../database/sequelize");
 const { v4: uuidv4 } = require('uuid');
@@ -10,6 +11,7 @@ const { v4: uuidv4 } = require('uuid');
 
 passport.use(dexcomStrategy);
 passport.use(googleStrategy);
+refresh.use('dexcom', dexcomStrategy);
 
 passport.serializeUser(function (user, done) {
     done(null, user.id);

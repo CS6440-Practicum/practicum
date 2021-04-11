@@ -1,4 +1,5 @@
 const OAuth2Strategy = require('passport-oauth2').Strategy;
+const refresh = require('passport-oauth2-refresh');
 
 const dexcomStrategy = new OAuth2Strategy({
         authorizationURL: 'https://sandbox-api.dexcom.com/v2/oauth2/login',
@@ -18,4 +19,16 @@ const dexcomStrategy = new OAuth2Strategy({
     }
 );
 
-module.exports = dexcomStrategy;
+async function refreshDexcomToken() {
+    refresh.requestNewAccessToken('dexcom', req.user.dexcomRefreshToken, function(err, accessToken, refreshToken) {
+        if (refreshToken) {
+          req.user.dexcomRefreshToken = refreshToken;
+        }
+        if (accessToken) {
+          req.user.dexcomAccessToken = accessToken;
+        }
+    });
+    await req.user.save();
+}
+
+module.exports = { dexcomStrategy, refreshDexcomToken };

@@ -940,6 +940,11 @@ passport-google-oauth2@0.2.0:
   dependencies:
     passport-oauth2 "^1.1.2"
 
+passport-oauth2-refresh@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/passport-oauth2-refresh/-/passport-oauth2-refresh-2.0.1.tgz#00a3d6faa39e9e3be40221c2773894f78d719fb2"
+  integrity sha512-09JUZ+bxedO31oDnYTb8GRR215NFd+JfbRY85EdppfxKYli5fv0+Ghr7HaLQtYz0BtCTevwOGPCGlrPVEs5Fug==
+
 passport-oauth2@1.5.0, passport-oauth2@^1.1.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.5.0.tgz#64babbb54ac46a4dcab35e7f266ed5294e3c4108"

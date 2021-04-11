@@ -10,10 +10,10 @@ async function fitReq(req) {
         'Authorization': 'Bearer ' + req.user.googleAccessToken
       },
     })
-    const json = await response.json();
-    return json;
+    return response.json();
   } catch (error) {
     console.log(error.response.body);
+    return {};
   }
 }
 

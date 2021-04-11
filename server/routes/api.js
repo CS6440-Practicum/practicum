@@ -5,7 +5,7 @@ const fitReq = require("./google");
 const { isAuthenticated, hasTokens } = require("../auth/auth");
 
 router.get('/egvs', isAuthenticated, hasTokens, async(req, res) => {
-    const json = dexReq(req);
+    const json = await dexReq(req);
     res.json(json);
 });
 

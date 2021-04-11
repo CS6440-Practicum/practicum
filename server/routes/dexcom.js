@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { refreshDexcomToken } = require('../auth/strategies/dexcom');
 
 async function dexReq(req) {
   try {
@@ -8,10 +9,14 @@ async function dexReq(req) {
         'Authorization': 'Bearer ' + req.user.dexcomAccessToken
       },
     })
-    const json = await response.json();
-    return json;
+    const { status } = response;
+    if (status === 401) {
+      await refreshDexcomToken();
+    }
+    return response.json();
   } catch (error) {
     console.log(error.response.body);
+    return {};
   }
 }
 
