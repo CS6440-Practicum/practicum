@@ -5,7 +5,7 @@ async function dexReq(req) {
   try {
     var response = await fetchDex(req);
     const { status } = response;
-    if (status) {
+    if (status === 401) {
       await refreshDexcomToken(req.user);
       response = await fetchDex(req);
     }
