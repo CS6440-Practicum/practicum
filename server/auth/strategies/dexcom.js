@@ -1,5 +1,6 @@
 const OAuth2Strategy = require('passport-oauth2').Strategy;
-const refresh = require('passport-oauth2-refresh');
+const qs = require("querystring");
+const http = require("https");
 
 const dexcomStrategy = new OAuth2Strategy({
         authorizationURL: 'https://sandbox-api.dexcom.com/v2/oauth2/login',
@@ -19,16 +20,48 @@ const dexcomStrategy = new OAuth2Strategy({
     }
 );
 
-async function refreshDexcomToken() {
-    refresh.requestNewAccessToken('dexcom', req.user.dexcomRefreshToken, function(err, accessToken, refreshToken) {
-        if (refreshToken) {
-          req.user.dexcomRefreshToken = refreshToken;
-        }
-        if (accessToken) {
-          req.user.dexcomAccessToken = accessToken;
-        }
+async function refreshDexcomToken(user) {
+    var req = http.request(refreshOptions, function (res) {
+        var chunks = [];
+      
+        res.on("data", function (chunk) {
+            chunks.push(chunk);
+        });
+      
+        res.on("end", function () {
+            var body = JSON.parse(Buffer.concat(chunks));
+            console.log(body);
+
+            if (body.access_token) {
+                user.dexcomAccessToken = body.access_token;
+            }
+            if (body.refresh_token) {
+                user.dexcomRefreshToken = body.refresh_token;
+            }
+        });
     });
-    await req.user.save();
+    
+    req.write(qs.stringify({
+        client_secret: process.env.DEXCOM_SECRET,
+        client_id: process.env.DEXCOM_ID,
+        refresh_token: user.dexcomRefreshToken,
+        grant_type: 'refresh_token',
+        redirect_uri: `${process.env.APP_BASE_URL}/auth/dexcom/callback`
+    }));
+    req.end();
+
+    await user.save();
 }
+
+const refreshOptions = {
+  "method": "POST",
+  "hostname": "api.dexcom.com",
+  "port": null,
+  "path": "/v2/oauth2/token",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded",
+    "cache-control": "no-cache"
+  }
+};
 
 module.exports = { dexcomStrategy, refreshDexcomToken };
