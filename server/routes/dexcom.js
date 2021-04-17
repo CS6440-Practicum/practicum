@@ -3,7 +3,7 @@ const { refreshDexcomToken } = require('../auth/strategies/dexcom');
 
 async function dexReq(req) {
   try {
-    var response = await tryFetch(req);
+    let response = await tryFetch(req);
     if (response === 401) {
       await refreshDexcomToken(req.user);
       response = await tryFetch(req);
@@ -20,8 +20,8 @@ async function dexReq(req) {
 }
 
 async function tryFetch(req) {
-  var response = await fetchDex(req);
-  var { status } = response;
+  const response = await fetchDex(req);
+  const { status } = response;
   if (status === 401) {
     return status;
   }
@@ -40,12 +40,12 @@ async function fetchDex(req) {
 function parseData(json) {
   var ret = { 'data': [] };
 
-  for(let val of json.egvs) {
+  json.egvs.map(function(val) {
     ret.data.push({
       'timestamp': new Date(val.systemTime).toISOString(),
       'value': val.value ? val.value : null
     });
-  }
+  });
 
   return ret;
 }

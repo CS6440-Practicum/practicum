@@ -39,12 +39,12 @@ function getBody(query) {
 function parseData(json) {
   var ret = { 'data': [] };
 
-  for(let val of json.bucket) {
+  json.bucket.map(function(val) {
     ret.data.push({
       'timestamp': avgTimestamp(val.startTimeMillis, val.endTimeMillis),
       'value': val.dataset[0].point[0] ? val.dataset[0].point[0].value[0].fpVal : 0
     });
-  }
+  });
 
   return ret;
 }
