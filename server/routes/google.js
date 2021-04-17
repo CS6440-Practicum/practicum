@@ -10,7 +10,8 @@ async function fitReq(req) {
         'Authorization': 'Bearer ' + req.user.googleAccessToken
       },
     })
-    return response.json();
+    const json = await response.json();
+    return parseData(json);
   } catch (error) {
     console.log(error);
     return {};
@@ -33,6 +34,24 @@ function getBody(query) {
   body.endTimeMillis = end;
 
   return JSON.stringify(body);
+}
+
+function parseData(json) {
+  var ret = { 'data': [] };
+
+  for(let val of json.bucket) {
+    ret.data.push({
+      'timestamp': avgTimestamp(val.startTimeMillis, val.endTimeMillis),
+      'value': val.dataset[0].point[0] ? val.dataset[0].point[0].value[0].fpVal : 0
+    });
+  }
+
+  return ret;
+}
+
+function avgTimestamp(startMillis, endMillis) {
+  const date = new Date((Number(startMillis) + Number(endMillis)) / 2);
+  return date.toISOString();
 }
 
 module.exports = fitReq;

@@ -11,7 +11,8 @@ async function dexReq(req) {
     if (response === 401) {
       return { 'error': 'unauthorized' };
     }
-    return response.json();
+    const json = await response.json();
+    return parseData(json);
   } catch (error) {
     console.log(error);
     return {};
@@ -34,6 +35,19 @@ async function fetchDex(req) {
       'Authorization': 'Bearer ' + req.user.dexcomAccessToken
     },
   })
+}
+
+function parseData(json) {
+  var ret = { 'data': [] };
+
+  for(let val of json.egvs) {
+    ret.data.push({
+      'timestamp': val.systemTime,
+      'value': val.value ? val.value : null
+    });
+  }
+
+  return ret;
 }
 
 module.exports = dexReq;
