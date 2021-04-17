@@ -3,17 +3,28 @@ const { refreshDexcomToken } = require('../auth/strategies/dexcom');
 
 async function dexReq(req) {
   try {
-    var response = await fetchDex(req);
-    const { status } = response;
-    if (status === 401) {
+    var response = await tryFetch(req);
+    if (response === 401) {
       await refreshDexcomToken(req.user);
-      response = await fetchDex(req);
+      response = await tryFetch(req);
+    }
+    if (response === 401) {
+      return { 'error': 'unauthorized' };
     }
     return response.json();
   } catch (error) {
     console.log(error);
     return {};
   }
+}
+
+async function tryFetch(req) {
+  var response = await fetchDex(req);
+  var { status } = response;
+  if (status === 401) {
+    return status;
+  }
+  return response;
 }
 
 async function fetchDex(req) {

@@ -12,7 +12,7 @@ async function fitReq(req) {
     })
     return response.json();
   } catch (error) {
-    console.log(error.response.body);
+    console.log(error);
     return {};
   }
 }
