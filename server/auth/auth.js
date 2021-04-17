@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const googleStrategy = require("./strategies/google");
-const dexcomStrategy = require("./strategies/dexcom");
+const { dexcomStrategy } = require("./strategies/dexcom");
 
 const { User } = require("../database/sequelize");
 const { v4: uuidv4 } = require('uuid');
@@ -29,7 +29,7 @@ router.get('/dexcom/callback',
     });
 
 router.get('/google', redirectIfGoogleLinked,
-    passport.authenticate('google', { scope: [ 'email', 'profile' ] }));
+    passport.authenticate('google', { scope: [ 'email', 'profile', 'https://www.googleapis.com/auth/fitness.activity.read' ] }));
 
 router.get( '/google/callback',
     passport.authenticate( 'google', { failureRedirect: '/error' }),
@@ -74,6 +74,17 @@ function isAuthenticated(request, response, next) {
     }
 }
 
+function hasTokens(request, response, next) {
+    if (!request.user || !request.user.googleAccessToken || !request.user.dexcomAccessToken) {
+        if (request.session) {
+            request.session.returnTo = request.originalUrl;
+        }
+        response.redirect("/auth/google");
+    } else {
+        next();
+    }
+}
+
 function redirectIfGoogleLinked(request, response, next) {
     if (request.user && request.user.googleAccessToken) {
         response.redirect("/");
@@ -92,5 +103,6 @@ function redirectIfDexcomLinked(request, response, next) {
 
 module.exports = {
     isAuthenticated,
+    hasTokens,
     router
 };
