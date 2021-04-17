@@ -42,7 +42,7 @@ function parseData(json) {
 
   for(let val of json.egvs) {
     ret.data.push({
-      'timestamp': val.systemTime,
+      'timestamp': new Date(val.systemTime).toISOString(),
       'value': val.value ? val.value : null
     });
   }
