@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { DateTime } = require("luxon");
 
 async function fitReq(req) {
   try {
@@ -11,7 +12,7 @@ async function fitReq(req) {
       },
     })
     const json = await response.json();
-    return parseData(json);
+    return parseData(json, req.query.tz);
   } catch (error) {
     console.log(error);
     return {};
@@ -28,20 +29,22 @@ const body = {
 }
 
 function getBody(query) {
-  var start = new Date(query.start).getTime();
-  var end = new Date(query.end).getTime();
+  const start = DateTime.fromISO(query.start).toMillis();
+  const end = DateTime.fromISO(query.end).toMillis();
+
   body.startTimeMillis = start;
   body.endTimeMillis = end;
 
   return JSON.stringify(body);
 }
 
-function parseData(json) {
+function parseData(json, tz) {
   var ret = { 'data': [] };
-
   json.bucket.map(function(val) {
     ret.data.push({
-      'timestamp': avgTimestamp(val.startTimeMillis, val.endTimeMillis),
+      'periodStart': DateTime.fromMillis(Number(val.startTimeMillis)).setZone(tz),
+      'periodEnd': DateTime.fromMillis(Number(val.endTimeMillis)).setZone(tz),
+      'timestamp': avgTimestamp(val.startTimeMillis, val.endTimeMillis, tz),
       'value': val.dataset[0].point[0] ? val.dataset[0].point[0].value[0].fpVal : 0
     });
   });
@@ -49,9 +52,9 @@ function parseData(json) {
   return ret;
 }
 
-function avgTimestamp(startMillis, endMillis) {
-  const date = new Date((Number(startMillis) + Number(endMillis)) / 2);
-  return date.toISOString();
+function avgTimestamp(startMillis, endMillis, tz) {
+  const date =  DateTime.fromMillis((Number(startMillis) + Number(endMillis)) / 2, { zone: tz});
+  return date.toString();
 }
 
 module.exports = fitReq;

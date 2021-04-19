@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const { refreshDexcomToken } = require('../auth/strategies/dexcom');
+const { DateTime } = require("luxon");
 
 async function dexReq(req) {
   try {
@@ -12,7 +13,7 @@ async function dexReq(req) {
       return { 'error': 'unauthorized' };
     }
     const json = await response.json();
-    return parseData(json);
+    return parseData(json, req.query.tz);
   } catch (error) {
     console.log(error);
     return {};
@@ -37,15 +38,19 @@ async function fetchDex(req) {
   })
 }
 
-function parseData(json) {
+function parseData(json, tz) {
   var ret = { 'data': [] };
 
   json.egvs.map(function(val) {
+    const timestamp = new Date(val.systemTime);
     ret.data.push({
-      'timestamp': new Date(val.systemTime).toISOString(),
+      'timestamp': DateTime.fromISO(val.systemTime, { zone: "utc" }).setZone(tz).toString(),
+      'timestampValue': timestamp.getTime(),
       'value': val.value ? val.value : null
     });
   });
+
+  ret.data = ret.data.sort((a, b) => a.timestampValue - b.timestampValue)
 
   return ret;
 }
