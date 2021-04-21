@@ -49,7 +49,8 @@ To use Dexercise, you'll first sign into your Google account, which will allow u
 
 ### Signing into your Dexcom account
 
-After you've successfully signed into your Google account, the next step is to authorize access to your CGM data from Dexcom.
+After you've successfully signed into your Google account, the next step is to authorize access to your CGM data from Dexcom:
+
 ![image](https://user-images.githubusercontent.com/5790137/115498635-f27d4c00-a23b-11eb-85ef-7058c320b8c1.png)
 
 1. Start by clicking the big, green **Connect your Dexcom account** button.
