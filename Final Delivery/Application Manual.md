@@ -26,7 +26,7 @@ Dexercise is a free web application aimed at people with type one diabetes.  How
 
 ## How do I access Dexercise?
 
-You can access Dexercise using any modern web browser at <TBD FILL ME IN>.  We've tested the application in Google Chrome on both Windows and Mac, but it should work on other systems, too.
+You can access Dexercise using any modern web browser at <TODO: FILL ME IN>.  We've tested the application in Google Chrome on both Windows and Mac, but it should work on other systems, too.
 
 ## How do I use Dexercise?
 
@@ -36,7 +36,7 @@ Begin by accessing the Dexercise website at the URL in the section above.
 
 To use Dexercise, you'll first sign into your Google account, which will allow us to access your data in Google Fit.  Follow the steps below to sign in:
 
-1. Go to <ADD URL HERE>
+1. Go to <TODO: ADD URL HERE>
 
 2. A prompt appears to sign into Google.  Click the blue **Sign in with Google** button, then follow the prompts from Google to select your Google account.
 ![Google signin prompt](https://user-images.githubusercontent.com/5790137/115498002-b5648a00-a23a-11eb-978b-effaf78f3c99.png)
@@ -59,6 +59,8 @@ After you've successfully signed into your Google account, the next step is to a
 4. On the authorization screen that appears, if you consent to sharing your Dexcom data with Dexercise, enter your electronic signature, then click **Authorize**.
 
 If you see a screen with a graph, then you've successfully signed into your Google and Dexcom accounts.  Read on to learn how to use this screen!
+
+<TODO: ADD GRAPH SCREENSHOT>
 
 ### Interpreting the Dexercise graph
 
