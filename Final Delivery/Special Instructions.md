@@ -12,7 +12,7 @@ There are two methods to access the application. Through the live deployment, or
 
 ### Live Deployment
 
-Instructions for accessing the live deployment can be found in the Application Manual.
+Instructions for accessing the live deployment can be found in the [Application Manual](https://github.com/CS6440-Practicum/practicum/blob/master/Final%20Delivery/Application%20Manual.md).
 
 ### Local Instance
 
