@@ -45,7 +45,6 @@ router.get("/mergedData", isAuthenticated, hasTokens, async (req, res, next) => 
 
     const dexcomData = await (dexReq(reqCopyForDexcom));
 
-
     res.json({
         data: dexcomData.data.map((dexPt, idx) => {
             return {

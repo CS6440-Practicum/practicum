@@ -40,7 +40,6 @@ async function fetchDex(req) {
 
 function parseData(json, tz) {
   var ret = { 'data': [] };
-
   json.egvs.map(function(val) {
     const timestamp = new Date(val.systemTime);
     ret.data.push({
