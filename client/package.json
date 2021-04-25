@@ -10,18 +10,23 @@
     "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.22",
     "@types/node": "^12.20.7",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
+    "@types/react": "^16.14.5",
+    "@types/react-dom": "^16.9.12",
     "@types/react-router-dom": "^5.1.7",
     "bootstrap": "^4.6.0",
+    "d3-scale": "^3.3.0",
+    "immutable": "^4.0.0-rc.12",
     "jquery": "^3.6.0",
+    "luxon": "^1.26.0",
+    "pondjs": "0.8.0",
     "popper.js": "^1.16.1",
-    "react": "^17.0.2",
+    "react": "^16.14.0",
     "react-bootstrap": "^1.5.2",
-    "react-dom": "^17.0.2",
+    "react-date-picker": "^8.1.1",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "semiotic": "1.20.6",
+    "react-timeseries-charts": "^0.16.1",
     "typescript": "^4.2.3",
     "use-async-effect": "^2.2.3",
     "web-vitals": "^1.1.1"
@@ -52,5 +57,7 @@
   },
   "proxy": "http://localhost:3000",
   "devDependencies": {
+    "@types/d3-scale": "^3.2.2",
+    "@types/luxon": "^1.26.4"
   }
 }

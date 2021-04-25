@@ -3,14 +3,16 @@ const fetch = require('node-fetch');
 const qs = require("querystring");
 
 const dexcomStrategy = new OAuth2Strategy({
-        authorizationURL: 'https://sandbox-api.dexcom.com/v2/oauth2/login',
-        tokenURL: 'https://sandbox-api.dexcom.com/v2/oauth2/token',
+        authorizationURL: `${process.env.DEXCOM_API_BASE}/v2/oauth2/login`,
+        tokenURL: `${process.env.DEXCOM_API_BASE}/v2/oauth2/token`,
         clientID: process.env.DEXCOM_ID,
         clientSecret: process.env.DEXCOM_SECRET,
         callbackURL: `${process.env.APP_BASE_URL}/auth/dexcom/callback`,
         passReqToCallback: true
     },
     async function(req, accessToken, refreshToken, profile, cb) {
+        console.log("made it to callback");
+
         const user = req.user;
 
         user.dexcomAccessToken = accessToken;
@@ -21,7 +23,7 @@ const dexcomStrategy = new OAuth2Strategy({
 );
 
 async function refreshDexcomToken(user) {
-    const response = await fetch(`https://sandbox-api.dexcom.com/v2/oauth2/token`, {
+    const response = await fetch(`${process.env.DEXCOM_API_BASE}/v2/oauth2/token`, {
         method: 'post',
         body: qs.stringify({
             client_secret: process.env.DEXCOM_SECRET,

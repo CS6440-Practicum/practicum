@@ -8,7 +8,7 @@ interface NavProps {
 
 export function Navigation({ user }: NavProps) {
 	return <Navbar bg="dark" expand="lg" variant="dark">
-		<Navbar.Brand href="#home">Glucose Tracker</Navbar.Brand>
+		<Navbar.Brand href="#home">Dexercise</Navbar.Brand>
 		<Navbar.Toggle aria-controls="basic-navbar-nav"/>
 		<Navbar.Collapse id="basic-navbar-nav">
 			<Nav className="mr-auto">

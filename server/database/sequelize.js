@@ -4,7 +4,8 @@ const UserModel = require("./models/User");
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: 'glucose_tracker.sqlite'
+    storage: 'glucose_tracker.sqlite',
+    logging: false,
 });
 
 const User = UserModel(sequelize, Sequelize);

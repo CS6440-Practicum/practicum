@@ -20,10 +20,12 @@ passport.deserializeUser(async function(id, done) {
 });
 
 router.get('/dexcom', isAuthenticated, redirectIfDexcomLinked,
-    passport.authorize('oauth2'));
+    passport.authorize('oauth2', {
+        scope: [ "offline_access" ]
+    }));
 
 router.get('/dexcom/callback',
-    passport.authorize('oauth2', { failureRedirect: '/error' }),
+    passport.authorize('oauth2', { scope: ["offline_access"], failureRedirect: '/error' }),
     function(req, res) {
         res.redirect(req.session.returnTo || "/");
     });
