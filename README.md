@@ -8,8 +8,9 @@ copy the `.env.example` file.
 
 | Variable      | Value                                                                                                                                                  |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| FIT_ID        | Google Fit Oauth2 client ID                                                                                                                            |
-| FIT_SECRET    | Google Fit Oauth2 client secret                                                                                                                        |
-| DEXCOM_ID     | Dexcom Oauth2 client ID                                                                                                                                |
-| DEXCOM_SECRET | Dexcom Oauth2 client secret                                                                                                                            |
-| APP_BASE_URL  | Base URL where the app is being hosted.  Used to generate callback URLs for Oauth2 authorizations.  Example: http://localhost:3000 for running locally |
+| FIT_ID        | Google Fit OAuth2 client ID                                                                                                                            |
+| FIT_SECRET    | Google Fit OAuth2 client secret                                                                                                                        |
+| DEXCOM_ID     | Dexcom OAuth2 client ID                                                                                                                                |
+| DEXCOM_SECRET | Dexcom OAuth2 client secret                                                                                                                            |
+| APP_BASE_URL  | Base URL where the app is being hosted.  Do not include a trailing `/`.  Used to generate callback URLs for OAuth2 authorizations.  Example: http://localhost:3000 for running locally |
+| DEXCOM_API_BASE | Base URL for Dexcom API requests.  Do not include a trailing `/`.  Used to switch between sandbox and production Dexcom environments.  Example: https://sandbox-api.dexcom.com
