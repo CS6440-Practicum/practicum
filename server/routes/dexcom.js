@@ -30,7 +30,7 @@ async function tryFetch(req) {
 }
 
 async function fetchDex(req) {
-  return fetch(`https://sandbox-api.dexcom.com/v2/users/self/egvs?startDate=${req.query.start}&endDate=${req.query.end}`, {
+  return fetch(`${process.env.DEXCOM_API_BASE}/v2/users/self/egvs?startDate=${req.query.start}&endDate=${req.query.end}`, {
     method: 'get',
     headers: {
       'Authorization': 'Bearer ' + req.user.dexcomAccessToken
@@ -40,6 +40,9 @@ async function fetchDex(req) {
 
 function parseData(json, tz) {
   var ret = { 'data': [] };
+
+  console.log(json);
+
   json.egvs.map(function(val) {
     const timestamp = new Date(val.systemTime);
     ret.data.push({
