@@ -26,7 +26,7 @@ Dexercise is a free web application aimed at people with type one diabetes.  How
 
 ## How do I access Dexercise?
 
-You can access Dexercise using any modern web browser at <TODO: FILL ME IN>.  We've tested the application in Google Chrome on both Windows and Mac, but it should work on other systems, too.
+You can access Dexercise using any modern web browser at https://dexercise.herokuapp.com.  We've tested the application in Google Chrome on both Windows and Mac, but it should work on other systems, too.
 
 ## How do I use Dexercise?
 
@@ -36,7 +36,7 @@ Begin by accessing the Dexercise website at the URL in the section above.
 
 To use Dexercise, you'll first sign into your Google account, which will allow us to access your data in Google Fit.  Follow the steps below to sign in:
 
-1. Go to <TODO: ADD URL HERE>
+1. Go to https://dexercise.herokuapp.com
 
 2. A prompt appears to sign into Google.  Click the blue **Sign in with Google** button, then follow the prompts from Google to select your Google account.
 ![Google signin prompt](https://user-images.githubusercontent.com/5790137/115498002-b5648a00-a23a-11eb-978b-effaf78f3c99.png)
@@ -60,11 +60,18 @@ After you've successfully signed into your Google account, the next step is to a
 
 If you see a screen with a graph, then you've successfully signed into your Google and Dexcom accounts.  Read on to learn how to use this screen!
 
-<TODO: ADD GRAPH SCREENSHOT>
+![EIG-Main](https://user-images.githubusercontent.com/5790137/115981975-a5fc7e00-a565-11eb-8a7b-13cfb56b5ac6.png)
+
 
 ### Interpreting the Dexercise graph
 
-TODO
+**NOTE:** Dexercise does not provide medical advice, and the accuracy of the information shown cannot be guaranteed. Many factors beyond exercise can affect your blood sugar.  Please consult a medical professional before making adjustments to your diabetes treatment regimen.
+
+Dexercise aims to allow you view Heart Points from Google Fit alongside your Dexcom CGM readings to visualize how exercise could be influencing your blood sugar levels. All data is shown in your local timezone.
+
+The red bars on the graph represent Google Fit Heart Points, which indicate the _intensity_ of exercise at a given point in time.  The **right axis** shows the Heart Point scale, from 0 to 10, with 10 being the most active.
+
+The black line on the graph is your estimated glucose values (EGVs) provided by your Dexcom CGM.  The **left axis** shows the range of possible EGVs, from 40 to 400 ("GET /egvs", n.d.).  Keep in mind that any inaccuracies or periods of missing data from your Dexcom CGM will also appear in any graphs you appear in Dexercise.
 
 ## Is my data safe?
 
@@ -84,6 +91,8 @@ If Dexercise were to be used in the real world, we would take the following addi
 # References
 
 _Continuous glucose monitoring._ (n.d.). National Institute of Diabetes and Digestive and Kidney Diseases. Retrieved April 18, 2021, from https://www.niddk.nih.gov/health-information/diabetes/overview/managing-diabetes/continuous-glucose-monitoring
+
+_GET /egvs._ (n.d.). Dexcom. Retrieved April 25, 2021, from https://developer.dexcom.com/get-egvs
 
 _How it works._ (n.d.). Dexcom. Retrieved April 18, 2021, from https://www.dexcom.com/g6/how-it-works
 
