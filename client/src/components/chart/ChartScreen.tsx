@@ -50,9 +50,12 @@ const ChartScreen = () => {
 			<h1>Exercise Impact Chart</h1>
 			<p>View Heart Points from Google Fit alongside your Dexcom CGM readings to visualize how exercise could
 				be influencing your blood sugar levels. Data is shown in your local timezone.</p>
+			<em>Many factors beyond exercise can affect your blood sugar.  Please consult a medical professional
+			before making adjustments to your diabetes treatment regimen.</em>
 
 
 			<DatePicker
+				className="mt-3"
 				onChange={date => setDate(date as SetStateAction<Date>)}
 				disabled={loading}
 				value={date}

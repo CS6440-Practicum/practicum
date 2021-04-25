@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, {useState} from "react";
 import CenteredBlock from "../util/CenteredBlock";
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {css} from "@emotion/react";
 
 const ConnectDexcom = () => {
@@ -15,17 +15,7 @@ const ConnectDexcom = () => {
 					background: #59A618;
 					border-color: #59A618;
 				`}
-			href="/auth/dexcom?">Connect your Dexcom account</Button>
-
-		<Form>
-			<Form.Row>
-				<Form.Group controlId="use-real-dexcom">
-					<Form.Check type="checkbox"
-					            label="Use production Dexcom API"
-					            onChange={event => setUseProdDexAPI(event.target.checked)} />
-				</Form.Group>
-			</Form.Row>
-		</Form>
+			href="/auth/dexcom">Connect your Dexcom account</Button>
 	</CenteredBlock>
 };
 
