@@ -17,6 +17,7 @@ The goal of this document is to outline the steps required to build the applicat
 - Frontend
     - Basic UI setup
     - Show/Handle user auth status
+    - Identify a frontend graph library
     - Set up graph visualization
     - Query backend for data
 - Configuration
@@ -49,5 +50,6 @@ The goal of this document is to outline the steps required to build the applicat
     - Process + combine data
 
 - Week 15 (4/18 - 4/24)
+    - Identify a frontend graph library
     - Set up graph visualization
     - Query backend for data
