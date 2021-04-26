@@ -17,11 +17,13 @@ Instructions for accessing the live deployment can be found in the [Application 
 ### Local Instance
 
 Requirements:
+
 - Git
 - Node JS
 - Yarn
 
 Steps:
+
 1. Clone this repository
 2. Open a terminal in the root of this project
 3. Run `yarn install` to install dependencies

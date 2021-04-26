@@ -39,10 +39,13 @@ To use Dexercise, you'll first sign into your Google account, which will allow u
 1. Go to https://dexercise.herokuapp.com
 
 2. A prompt appears to sign into Google.  Click the blue **Sign in with Google** button, then follow the prompts from Google to select your Google account.
+
 ![Google signin prompt](https://user-images.githubusercontent.com/5790137/115498002-b5648a00-a23a-11eb-978b-effaf78f3c99.png)
+
 ![image](https://user-images.githubusercontent.com/5790137/115498339-623f0700-a23b-11eb-993d-63fda312d5ec.png)
 
 3. A page may appear warning you that the app is unverified.  Since we are still in the testing phases, our application has not been verified by Google.  However, you can click **Advanced** link, then the link to **Go to <ADD URL HERE> (unsafe)** to bypass the warning.
+
 ![image](https://user-images.githubusercontent.com/5790137/115498304-55baae80-a23b-11eb-91d4-f9ce035681f6.png)
   
 4. If prompted to consent to sharing your Google Account or Google Fit data, choose **Allow** (if you consent) to continue the sign in process.
