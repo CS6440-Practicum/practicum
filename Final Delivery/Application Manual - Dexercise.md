@@ -85,7 +85,7 @@ Dexercise aims to allow you view Heart Points from Google Fit alongside your Dex
 
 The red bars on the graph represent Google Fit Heart Points, which indicate the _intensity_ of exercise at a given point in time.  The **right axis** shows the Heart Point scale, from 0 to 10, with 10 being the most active.
 
-The black line on the graph is your estimated glucose values (EGVs) provided by your Dexcom CGM.  The **left axis** shows the range of possible EGVs, from 40 to 400 ("GET /egvs", n.d.).  Keep in mind that any inaccuracies or periods of missing data from your Dexcom CGM will also appear in any graphs you appear in Dexercise.
+The black line on the graph is your estimated glucose values (EGVs) provided by your Dexcom CGM.  The **left axis** shows the range of possible EGVs, from 40 to 400 ("GET /egvs", n.d.).  Keep in mind that any inaccuracies or periods of missing data from your Dexcom CGM will also appear in any graphs that appear in Dexercise.
 
 ## Is my data safe?
 
