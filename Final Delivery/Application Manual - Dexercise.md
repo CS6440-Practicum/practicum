@@ -42,11 +42,11 @@ To use Dexercise, you'll first sign into your Google account, which will allow u
 
 ![Google signin prompt](https://user-images.githubusercontent.com/5790137/115498002-b5648a00-a23a-11eb-978b-effaf78f3c99.png)
 
-![image](https://user-images.githubusercontent.com/5790137/115498339-623f0700-a23b-11eb-993d-63fda312d5ec.png)
+![Google signin email prompt](https://user-images.githubusercontent.com/5790137/115498339-623f0700-a23b-11eb-993d-63fda312d5ec.png)
 
 3. A page may appear warning you that the app is unverified.  Since we are still in the testing phases, our application has not been verified by Google.  However, you can click **Advanced** link, then the link to **Go to <ADD URL HERE> (unsafe)** to bypass the warning.
 
-![image](https://user-images.githubusercontent.com/5790137/115498304-55baae80-a23b-11eb-91d4-f9ce035681f6.png)
+![Unverified app warning from Google](https://user-images.githubusercontent.com/5790137/115498304-55baae80-a23b-11eb-91d4-f9ce035681f6.png)
   
 4. If prompted to consent to sharing your Google Account or Google Fit data, choose **Allow** (if you consent) to continue the sign in process.
 
@@ -54,7 +54,7 @@ To use Dexercise, you'll first sign into your Google account, which will allow u
 
 After you've successfully signed into your Google account, the next step is to authorize access to your CGM data from Dexcom:
 
-![image](https://user-images.githubusercontent.com/5790137/115498635-f27d4c00-a23b-11eb-85ef-7058c320b8c1.png)
+![Dexercise prompt for Dexcom signin](https://user-images.githubusercontent.com/5790137/115498635-f27d4c00-a23b-11eb-85ef-7058c320b8c1.png)
 
 1. Start by clicking the big, green **Connect your Dexcom account** button.
 2. We are currently using the Dexcom sandbox API, so you will just see a dropdown of users to pick from.  In a real application, users would enter their Dexcom account username and password on this screen.
@@ -63,7 +63,7 @@ After you've successfully signed into your Google account, the next step is to a
 
 If you see a screen with a graph, then you've successfully signed into your Google and Dexcom accounts.  Read on to learn how to use this screen!
 
-![EIG-Main](https://user-images.githubusercontent.com/5790137/115981975-a5fc7e00-a565-11eb-8a7b-13cfb56b5ac6.png)
+![Dexercise's Exercise Impact Chart](https://user-images.githubusercontent.com/5790137/115981975-a5fc7e00-a565-11eb-8a7b-13cfb56b5ac6.png)
 
 
 ### Interpreting the Dexercise graph
