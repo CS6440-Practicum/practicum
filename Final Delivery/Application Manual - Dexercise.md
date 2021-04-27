@@ -2,11 +2,22 @@
 
 This document will tell you everything you need to know to start using Dexercise as a user.  Here's what we'll cover:
 
+- Team and Project Info
 - What is Dexercise?
 - Who can use Dexercise?
 - How do I access Dexercise?
 - How do I use Dexercise?
 - Is my data safe?
+
+## Team and Project Info
+
+**Team name:** Glucose-Tracker
+
+**Team members:** Jonathan Marple, Evan Strat
+
+**Project name:** Dexercise
+
+**Github link:** https://github.com/CS6440-Practicum/practicum
 
 ## What is Dexercise?
 
